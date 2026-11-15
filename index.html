@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Century 21 Oasis - Guillermo Croes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-[#f8f8f8] font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-[#1C1C1C] py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter text-white">
+                CENTURY 21 <span class="font-light text-[#CBA052]">Oasis</span>
+            </h1>
+            <a href="https://wa.me/584248801183?text=Hola%20Guillermo,%20vengo%20de%20tu%20portafolio%20web%20y%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20inmobiliaria." target="_blank" class="px-6 py-2 bg-[#CBA052] text-white text-sm font-medium rounded hover:bg-[#A58B5C] transition-colors">
+                Contactar
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden bg-[#1C1C1C]">
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
+            <p class="text-sm md:text-base uppercase tracking-[0.3em] mb-4 text-[#CBA052]">Asesoría Inmobiliaria de Alto Nivel</p>
+            <h2 class="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Inversiones Seguras en <br/> <span class="text-[#CBA052]">Anzoátegui</span>
+            </h2>
+            <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto font-light">
+                Especialista en propiedades residenciales, comerciales e industriales en Barcelona, Puerto La Cruz y Lechería.
+            </p>
+            <a href="#portafolio" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#1C1C1C] font-semibold hover:bg-gray-200 transition-colors rounded">
+                Ver Portafolio <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Perfil -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-5/12 relative">
+                <div class="absolute inset-0 translate-x-4 translate-y-4 border-2 border-[#CBA052]"></div>
+                <img src="watermarked_img_10787971688206927462.webp" alt="Guillermo Croes" class="relative z-10 w-full h-auto object-cover shadow-2xl">
+            </div>
+            <div class="w-full md:w-7/12">
+                <h3 class="text-3xl md:text-4xl font-bold mb-2 text-[#1C1C1C]">Guillermo Croes</h3>
+                <p class="text-xl mb-6 text-[#A58B5C]">Asesor Inmobiliario | Century 21 Oasis</p>
+                <div class="w-16 h-1 bg-[#CBA052] mb-8"></div>
+                <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                    Con más de 5 años de trayectoria en el mercado inmobiliario del estado Anzoátegui, brindo un servicio ejecutivo, transparente y enfocado en resultados. 
+                </p>
+                <div class="flex flex-wrap gap-4 mt-8">
+                    <a href="https://instagram.com/guillermo_croes" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-black transition-colors"><i class="fab fa-instagram text-xl"></i> @guillermo_croes</a>
+                    <a href="https://instagram.com/c21guillermocroes" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-black transition-colors"><i class="fab fa-instagram text-xl"></i> @c21guillermocroes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portafolio -->
+    <section id="portafolio" class="py-24 bg-[#1C1C1C]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-4">Catálogo Exclusivo</h3>
+                <p class="text-gray-400 text-lg">Oportunidades seleccionadas para tu inversión.</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="flex justify-center gap-4 mb-16">
+                <button id="btn-venta" onclick="setFilter('venta')" class="px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors">En Venta</button>
+                <button id="btn-alquiler" onclick="setFilter('alquiler')" class="px-8 py-3 text-sm uppercase font-bold text-gray-400 border border-gray-600 hover:border-[#CBA052] hover:text-[#CBA052] transition-colors">En Alquiler</button>
+            </div>
+
+            <div id="propiedades-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Se llena con JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-[#333]">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">CENTURY 21 <span class="font-light text-[#CBA052]">Oasis</span></h2>
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">Innovación, exclusividad y resultados en el mercado inmobiliario oriental.</p>
+            <div class="text-sm text-gray-500">&copy; 2026 Guillermo Croes. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+
+    <script>
+        const properties = [
+            { status: 'venta', type: "Terreno Industrial", title: "Terreno de Gran Escala - Eje Petroquímico", location: "Los Potocos (frente al Peaje)", price: "$4.50 - $5.00 / m²", area: "228 Hectáreas", image: "WhatsApp Image 2026-11-15 at 10.26.44 AM.jpeg" },
+            { status: 'venta', type: "Terreno Comercial", title: "Oportunidad de Inversión en Nueva Barcelona", location: "Carrera 34, Urb. Nueva Barcelona", price: "$130.000", area: "800 m²", image: "WhatsApp Image 2026-11-15 at 10.32.49 AM (1).jpeg" },
+            { status: 'venta', type: "Finca Productiva", title: "Finca Agropecuaria Activa", location: "Km 52 vía Maturín", price: "$85.000", area: "85 Hectáreas", image: "WhatsApp Image 2026-11-15 at 10.41.55 AM (4).jpeg" },
+            { status: 'ambos', type: "Galpón Industrial", title: "Complejo Industrial y Logístico", location: "Zona Industrial de Barcelona", price: "Venta: $700.000 | Alq: $8.000", area: "4.445 m²", image: "WhatsApp Image 2026-11-15 at 10.53.43 AM (1).jpeg" },
+            { status: 'venta', type: "Local Comercial", title: "Sede Corporativa en C.C. Géminis", location: "Av. Intercomunal, Barcelona", price: "$100.000", area: "347 m²", image: "WhatsApp Image 2026-11-15 at 10.58.12 AM (6).jpeg" },
+            { status: 'alquiler', type: "Oficina Comercial", title: "Oficina Ejecutiva Amoblada", location: "Av. Fabricio Ojeda, Lechería", price: "$600 / mes", area: "44 m²", image: "WhatsApp Image 2026-11-15 at 11.03.40 AM (2).jpeg" },
+            { status: 'alquiler', type: "Locales Comerciales", title: "Galería Comercial en Barcelona Centro", location: "Centro de Barcelona", price: "$150 - $250 / mes", area: "9 m² - 16 m²", image: "WhatsApp Image 2026-11-15 at 11.09.24 AM (1).jpeg" },
+            { status: 'alquiler', type: "Oficina Comercial", title: "Oficina Premium en C.C. Grey Plaza", location: "Lechería", price: "$1.250 / mes", area: "45 m²", image: "WhatsApp Image 2026-11-15 at 11.14.43 AM (1).jpeg" },
+            { status: 'alquiler', type: "Alquiler Vacacional", title: "Casa La Curruca a Orillas del Mar", location: "Ensenada Honda (Cumaná)", price: "200€ / día", area: "12 personas", image: "WhatsApp Image 2026-11-15 at 11.22.32 AM.jpeg" },
+            { status: 'alquiler', type: "Alquiler Vacacional", title: "Apartamento Frente a los Canales", location: "Residencias THAI, Lechería", price: "$120 / noche", area: "3 Habitaciones", image: "WhatsApp Image 2026-11-15 at 11.33.28 AM (5).jpeg" },
+            { status: 'venta', type: "Casa / Villa", title: "Espectacular Propiedad con Piscina y Vivero", location: "Cantaclaro, vía El Rincón", price: "$70.000", area: "2.274 m²", image: "WhatsApp Image 2026-11-15 at 11.38.47 AM (4).jpeg" },
+            { status: 'venta', type: "Complejo Comercial", title: "Macroproyecto de Inversión en San Mateo", location: "Avenida El Carito, San Mateo", price: "$300.000", area: "8.917 m²", image: "WhatsApp Image 2026-11-15 at 11.58.10 AM (1).jpeg" },
+            { status: 'venta', type: "Local / Salones", title: "Gran Local Comercial en Plaza Miranda", location: "Frente a Plaza Miranda", price: "$1.100.000", area: "780 m²", image: "WhatsApp Image 2026-11-15 at 12.00.40 PM (3).jpeg" },
+            { status: 'venta', type: "Casa / Residencial", title: "Casa Principal + Anexo Independiente", location: "San Mateo, Municipio Libertad", price: "$26.000", area: "965 m²", image: "WhatsApp Image 2026-11-15 at 12.03.31 PM (1).jpeg" },
+            { status: 'venta', type: "Oficina / Local", title: "Oficina Corporativa en C.C. Casanova", location: "Av. Miranda, Barcelona", price: "$60.000", area: "110 m²", image: "WhatsApp Image 2026-11-15 at 12.05.08 PM (1).jpeg" },
+            { status: 'venta', type: "Local Comercial", title: "Local Ideal Emprendedores - C.C. Casanova", location: "Av. Miranda, Barcelona", price: "$17.000", area: "19 m²", image: "WhatsApp Image 2026-11-15 at 12.06.40 PM.jpeg" },
+            { status: 'venta', type: "Local Comercial", title: "Local Comercial de 28 m² - C.C. Casanova", location: "Av. Miranda, Barcelona", price: "$21.000", area: "28 m²", image: "WhatsApp Image 2026-11-15 at 12.06.40 PM (2).jpeg" },
+            { status: 'venta', type: "Terreno Comercial", title: "Terreno en Excelente Ubicación Comercial", location: "Urb. Camino Nuevo 1, Barcelona", price: "$60.000", area: "213,50 m²", image: "WhatsApp Image 2026-11-15 at 12.12.07 PM.jpeg" },
+            { status: 'venta', type: "Apartamento", title: "Apartamento Listo para Ocupar - Las Aves", location: "Conjunto Residencial Las Aves", price: "$60.000", area: "74 m²", image: "WhatsApp Image 2026-11-15 at 12.13.45 PM (1).jpeg" },
+            { status: 'alquiler', type: "Local Comercial", title: "Locales Modulares en C.C. Grey Plaza", location: "Centro Comercial Grey Plaza", price: "$750 - $1.250 / mes", area: "45 - 90 m²", image: "WhatsApp Image 2026-11-15 at 12.16.17 PM (1).jpeg" },
+            { status: 'venta', type: "Townhouse", title: "Exclusivo Townhouse en Savannah Place", location: "Savannah Place, Lechería", price: "$320.000", area: "194 m²", image: "WhatsApp Image 2026-11-15 at 12.18.07 PM (1).jpeg" },
+            { status: 'venta', type: "Local / Bodegón", title: "Bodegón Totalmente Equipado", location: "Av. Miranda, Barcelona", price: "$600.000", area: "250 m²", image: "WhatsApp Image 2026-11-15 at 12.23.32 PM (2).jpeg" },
+            { status: 'venta', type: "Apartamento", title: "Lujo y Confort en C.R. Coral Suites", location: "Lechería (Piso 9)", price: "$126.000", area: "87 m²", image: "WhatsApp Image 2026-11-15 at 12.26.33 PM (1).jpeg" },
+            { status: 'alquiler', type: "Local Comercial", title: "Local Comercial en Planta Baja", location: "Av. Fuerzas Armadas, Barcelona", price: "$300 / mes", area: "50 m²", image: "WhatsApp Image 2026-11-15 at 12.28.41 PM (2).jpeg" }
+        ];
+
+        let activeFilter = 'venta';
+
+        function renderProperties() {
+            const container = document.getElementById('propiedades-container');
+            container.innerHTML = '';
+            
+            const filtered = properties.filter(p => p.status === activeFilter || p.status === 'ambos');
+            
+            filtered.forEach(prop => {
+                const labelStatus = prop.status === 'ambos' ? 'Venta / Alquiler' : prop.status;
+                const msg = `Hola Guillermo, estoy interesado en: ${prop.title} (${prop.price})`;
+                
+                container.innerHTML += `
+                <div class="bg-white rounded shadow-xl flex flex-col fade-in">
+                    <div class="relative h-64 bg-gray-200">
+                        <img src="${prop.image}" alt="${prop.title}" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase text-white bg-[#1C1C1C]">${prop.type}</div>
+                        <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold uppercase text-[#1C1C1C] bg-[#CBA052]">${labelStatus}</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">${prop.title}</h4>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-[#CBA052]"></i> ${prop.location}</p>
+                        <div class="mb-6">
+                            <p class="text-2xl font-bold text-[#A58B5C]">${prop.price}</p>
+                            <p class="text-sm font-semibold text-gray-600">Dimensión: ${prop.area}</p>
+                        </div>
+                        <a href="https://wa.me/584248801183?text=${encodeURIComponent(msg)}" target="_blank" class="w-full mt-auto py-3 flex justify-center items-center gap-2 text-white font-medium bg-[#1C1C1C] rounded hover:bg-[#333] transition-colors">
+                            <i class="fab fa-whatsapp"></i> Solicitar Información
+                        </a>
+                    </div>
+                </div>`;
+            });
+        }
+
+        function setFilter(filter) {
+            activeFilter = filter;
+            const btnVenta = document.getElementById('btn-venta');
+            const btnAlquiler = document.getElementById('btn-alquiler');
+
+            if(filter === 'venta') {
+                btnVenta.className = 'px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors';
+                btnAlquiler.className = 'px-8 py-3 text-sm uppercase font-bold text-gray-400 border border-gray-600 hover:border-[#CBA052] hover:text-[#CBA052] transition-colors';
+            } else {
+                btnAlquiler.className = 'px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors';
+                btnVenta.className = 'px-8 py-3 text-sm uppercase font-bold text-gray-400 border border-gray-600 hover:border-[#CBA052] hover:text-[#CBA052] transition-colors';
+            }
+            renderProperties();
+        }
+
+        renderProperties();
+    </script>
+</body>
+</html>
