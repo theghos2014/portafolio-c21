@@ -9,6 +9,8 @@
     <style>
         .fade-in { animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Evita que el fondo se mueva cuando la galería está abierta */
+        body.modal-open { overflow: hidden; }
     </style>
 </head>
 <body class="bg-[#f8f8f8] font-sans">
@@ -19,7 +21,7 @@
             <h1 class="text-2xl font-bold tracking-tighter text-white">
                 CENTURY 21 <span class="font-light text-[#CBA052]">Oasis</span>
             </h1>
-            <a href="https://wa.me/584248801183?text=Hola%20Guillermo,%20vengo%20de%20tu%20portafolio%20web%20y%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20inmobiliaria." target="_blank" class="px-6 py-2 bg-[#CBA052] text-white text-sm font-medium rounded hover:bg-[#A58B5C] transition-colors">
+            <a href="https://wa.me/584248801183?text=Hola%20Guillermo,%20vengo%20de%20tu%20portafolio%20web." target="_blank" class="px-6 py-2 bg-[#CBA052] text-white text-sm font-medium rounded hover:bg-[#A58B5C] transition-colors shadow">
                 Contactar
             </a>
         </div>
@@ -35,8 +37,8 @@
             <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto font-light">
                 Especialista en propiedades residenciales, comerciales e industriales en Barcelona, Puerto La Cruz y Lechería.
             </p>
-            <a href="#portafolio" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#1C1C1C] font-semibold hover:bg-gray-200 transition-colors rounded">
-                Ver Portafolio <i class="fas fa-chevron-right"></i>
+            <a href="#portafolio" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#1C1C1C] font-semibold hover:bg-gray-200 transition-colors rounded shadow-lg">
+                Ver Portafolio <i class="fas fa-chevron-down"></i>
             </a>
         </div>
     </header>
@@ -53,11 +55,11 @@
                 <p class="text-xl mb-6 text-[#A58B5C]">Asesor Inmobiliario | Century 21 Oasis</p>
                 <div class="w-16 h-1 bg-[#CBA052] mb-8"></div>
                 <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                    Con más de 5 años de trayectoria en el mercado inmobiliario del estado Anzoátegui, brindo un servicio ejecutivo, transparente y enfocado en resultados. 
+                    Con más de 5 años de trayectoria en el mercado inmobiliario del estado Anzoátegui, brindo un servicio ejecutivo, transparente y enfocado en resultados. Te acompaño en cada paso de la negociación.
                 </p>
                 <div class="flex flex-wrap gap-4 mt-8">
-                    <a href="https://instagram.com/guillermo_croes" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-black transition-colors"><i class="fab fa-instagram text-xl"></i> @guillermo_croes</a>
-                    <a href="https://instagram.com/c21guillermocroes" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-black transition-colors"><i class="fab fa-instagram text-xl"></i> @c21guillermocroes</a>
+                    <a href="https://instagram.com/guillermo_croes" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-[#CBA052] hover:text-[#CBA052] transition-colors"><i class="fab fa-instagram text-xl"></i> @guillermo_croes</a>
+                    <a href="https://instagram.com/c21guillermocroes" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-[#CBA052] hover:text-[#CBA052] transition-colors"><i class="fab fa-instagram text-xl"></i> @c21guillermocroes</a>
                 </div>
             </div>
         </div>
@@ -73,7 +75,7 @@
 
             <!-- Filtros -->
             <div class="flex justify-center gap-4 mb-16">
-                <button id="btn-venta" onclick="setFilter('venta')" class="px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors">En Venta</button>
+                <button id="btn-venta" onclick="setFilter('venta')" class="px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors shadow">En Venta</button>
                 <button id="btn-alquiler" onclick="setFilter('alquiler')" class="px-8 py-3 text-sm uppercase font-bold text-gray-400 border border-gray-600 hover:border-[#CBA052] hover:text-[#CBA052] transition-colors">En Alquiler</button>
             </div>
 
@@ -82,6 +84,28 @@
             </div>
         </div>
     </section>
+
+    <!-- Galería Modal (Oculta por defecto) -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] bg-black bg-opacity-95 hidden flex-col items-center justify-center backdrop-blur-sm transition-opacity">
+        <button onclick="closeGallery()" class="absolute top-6 right-6 text-white text-4xl hover:text-[#CBA052] transition-colors z-50">&times;</button>
+        
+        <div class="relative w-full max-w-5xl flex items-center justify-center p-4">
+            <button onclick="prevImage()" class="absolute left-2 md:left-10 text-white text-5xl hover:text-[#CBA052] transition-colors z-50">
+                <i class="fas fa-chevron-left drop-shadow-lg"></i>
+            </button>
+            
+            <!-- Imagen Principal -->
+            <img id="gallery-img" src="" class="max-h-[85vh] max-w-full object-contain shadow-2xl rounded">
+            
+            <button onclick="nextImage()" class="absolute right-2 md:right-10 text-white text-5xl hover:text-[#CBA052] transition-colors z-50">
+                <i class="fas fa-chevron-right drop-shadow-lg"></i>
+            </button>
+        </div>
+        
+        <div class="absolute bottom-6 text-white text-lg tracking-widest bg-black bg-opacity-50 px-4 py-1 rounded-full">
+            <span id="gallery-counter" class="font-bold text-[#CBA052]">1</span> / <span id="gallery-total">5</span>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-black text-white py-12 border-t border-[#333]">
@@ -94,81 +118,236 @@
 
     <script>
         const properties = [
-            { status: 'venta', type: "Terreno Industrial", title: "Terreno de Gran Escala - Eje Petroquímico", location: "Los Potocos (frente al Peaje)", price: "$4.50 - $5.00 / m²", area: "228 Hectáreas", image: "WhatsApp Image 2026-11-15 at 10.26.44 AM.jpeg" },
-            { status: 'venta', type: "Terreno Comercial", title: "Oportunidad de Inversión en Nueva Barcelona", location: "Carrera 34, Urb. Nueva Barcelona", price: "$130.000", area: "800 m²", image: "WhatsApp Image 2026-11-15 at 10.32.49 AM (1).jpeg" },
-            { status: 'venta', type: "Finca Productiva", title: "Finca Agropecuaria Activa", location: "Km 52 vía Maturín", price: "$85.000", area: "85 Hectáreas", image: "WhatsApp Image 2026-11-15 at 10.41.55 AM (4).jpeg" },
-            { status: 'ambos', type: "Galpón Industrial", title: "Complejo Industrial y Logístico", location: "Zona Industrial de Barcelona", price: "Venta: $700.000 | Alq: $8.000", area: "4.445 m²", image: "WhatsApp Image 2026-11-15 at 10.53.43 AM (1).jpeg" },
-            { status: 'venta', type: "Local Comercial", title: "Sede Corporativa en C.C. Géminis", location: "Av. Intercomunal, Barcelona", price: "$100.000", area: "347 m²", image: "WhatsApp Image 2026-11-15 at 10.58.12 AM (6).jpeg" },
-            { status: 'alquiler', type: "Oficina Comercial", title: "Oficina Ejecutiva Amoblada", location: "Av. Fabricio Ojeda, Lechería", price: "$600 / mes", area: "44 m²", image: "WhatsApp Image 2026-11-15 at 11.03.40 AM (2).jpeg" },
-            { status: 'alquiler', type: "Locales Comerciales", title: "Galería Comercial en Barcelona Centro", location: "Centro de Barcelona", price: "$150 - $250 / mes", area: "9 m² - 16 m²", image: "WhatsApp Image 2026-11-15 at 11.09.24 AM (1).jpeg" },
-            { status: 'alquiler', type: "Oficina Comercial", title: "Oficina Premium en C.C. Grey Plaza", location: "Lechería", price: "$1.250 / mes", area: "45 m²", image: "WhatsApp Image 2026-11-15 at 11.14.43 AM (1).jpeg" },
-            { status: 'alquiler', type: "Alquiler Vacacional", title: "Casa La Curruca a Orillas del Mar", location: "Ensenada Honda (Cumaná)", price: "200€ / día", area: "12 personas", image: "WhatsApp Image 2026-11-15 at 11.22.32 AM.jpeg" },
-            { status: 'alquiler', type: "Alquiler Vacacional", title: "Apartamento Frente a los Canales", location: "Residencias THAI, Lechería", price: "$120 / noche", area: "3 Habitaciones", image: "WhatsApp Image 2026-11-15 at 11.33.28 AM (5).jpeg" },
-            { status: 'venta', type: "Casa / Villa", title: "Espectacular Propiedad con Piscina y Vivero", location: "Cantaclaro, vía El Rincón", price: "$70.000", area: "2.274 m²", image: "WhatsApp Image 2026-11-15 at 11.38.47 AM (4).jpeg" },
-            { status: 'venta', type: "Complejo Comercial", title: "Macroproyecto de Inversión en San Mateo", location: "Avenida El Carito, San Mateo", price: "$300.000", area: "8.917 m²", image: "WhatsApp Image 2026-11-15 at 11.58.10 AM (1).jpeg" },
-            { status: 'venta', type: "Local / Salones", title: "Gran Local Comercial en Plaza Miranda", location: "Frente a Plaza Miranda", price: "$1.100.000", area: "780 m²", image: "WhatsApp Image 2026-11-15 at 12.00.40 PM (3).jpeg" },
-            { status: 'venta', type: "Casa / Residencial", title: "Casa Principal + Anexo Independiente", location: "San Mateo, Municipio Libertad", price: "$26.000", area: "965 m²", image: "WhatsApp Image 2026-11-15 at 12.03.31 PM (1).jpeg" },
-            { status: 'venta', type: "Oficina / Local", title: "Oficina Corporativa en C.C. Casanova", location: "Av. Miranda, Barcelona", price: "$60.000", area: "110 m²", image: "WhatsApp Image 2026-11-15 at 12.05.08 PM (1).jpeg" },
-            { status: 'venta', type: "Local Comercial", title: "Local Ideal Emprendedores - C.C. Casanova", location: "Av. Miranda, Barcelona", price: "$17.000", area: "19 m²", image: "WhatsApp Image 2026-11-15 at 12.06.40 PM.jpeg" },
-            { status: 'venta', type: "Local Comercial", title: "Local Comercial de 28 m² - C.C. Casanova", location: "Av. Miranda, Barcelona", price: "$21.000", area: "28 m²", image: "WhatsApp Image 2026-11-15 at 12.06.40 PM (2).jpeg" },
-            { status: 'venta', type: "Terreno Comercial", title: "Terreno en Excelente Ubicación Comercial", location: "Urb. Camino Nuevo 1, Barcelona", price: "$60.000", area: "213,50 m²", image: "WhatsApp Image 2026-11-15 at 12.12.07 PM.jpeg" },
-            { status: 'venta', type: "Apartamento", title: "Apartamento Listo para Ocupar - Las Aves", location: "Conjunto Residencial Las Aves", price: "$60.000", area: "74 m²", image: "WhatsApp Image 2026-11-15 at 12.13.45 PM (1).jpeg" },
-            { status: 'alquiler', type: "Local Comercial", title: "Locales Modulares en C.C. Grey Plaza", location: "Centro Comercial Grey Plaza", price: "$750 - $1.250 / mes", area: "45 - 90 m²", image: "WhatsApp Image 2026-11-15 at 12.16.17 PM (1).jpeg" },
-            { status: 'venta', type: "Townhouse", title: "Exclusivo Townhouse en Savannah Place", location: "Savannah Place, Lechería", price: "$320.000", area: "194 m²", image: "WhatsApp Image 2026-11-15 at 12.18.07 PM (1).jpeg" },
-            { status: 'venta', type: "Local / Bodegón", title: "Bodegón Totalmente Equipado", location: "Av. Miranda, Barcelona", price: "$600.000", area: "250 m²", image: "WhatsApp Image 2026-11-15 at 12.23.32 PM (2).jpeg" },
-            { status: 'venta', type: "Apartamento", title: "Lujo y Confort en C.R. Coral Suites", location: "Lechería (Piso 9)", price: "$126.000", area: "87 m²", image: "WhatsApp Image 2026-11-15 at 12.26.33 PM (1).jpeg" },
-            { status: 'alquiler', type: "Local Comercial", title: "Local Comercial en Planta Baja", location: "Av. Fuerzas Armadas, Barcelona", price: "$300 / mes", area: "50 m²", image: "WhatsApp Image 2026-11-15 at 12.28.41 PM (2).jpeg" }
+            { 
+                id: 1, status: 'venta', type: "Terreno Industrial", title: "Terreno de Gran Escala", location: "Los Potocos (frente al Peaje)", price: "$4.50 - $5.00 / m²", area: "228 Hectáreas", 
+                images: ["WhatsApp Image 2026-11-15 at 10.26.44 AM.jpeg"],
+                description: "Ideal para desarrollos industriales, logísticas o agroindustriales cerca del Complejo Petroquímico."
+            },
+            { 
+                id: 2, status: 'venta', type: "Terreno Comercial", title: "Oportunidad Nueva Barcelona", location: "Urb. Nueva Barcelona", price: "$130.000", area: "800 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 10.32.49 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 10.32.49 AM (2).jpeg", "WhatsApp Image 2026-11-15 at 10.32.49 AM (3).jpeg", "WhatsApp Image 2026-11-15 at 10.32.49 AM.jpeg"],
+                description: "Terreno estratégico ideal para ejecutar proyecto comercial de alto tráfico o residencial exclusivo."
+            },
+            { 
+                id: 3, status: 'venta', type: "Finca Productiva", title: "Finca Agropecuaria Activa", location: "Km 52 vía Maturín", price: "$85.000", area: "85 Hectáreas", 
+                images: ["WhatsApp Image 2026-11-15 at 10.41.55 AM (4).jpeg", "WhatsApp Image 2026-11-15 at 10.41.52 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 10.41.54 AM.jpeg", "WhatsApp Image 2026-11-15 at 10.41.56 AM (1).jpeg"],
+                description: "Finca en funcionamiento equipada para producción inmediata, con lagunas y sistema de riego."
+            },
+            { 
+                id: 4, status: 'ambos', type: "Galpón Industrial", title: "Complejo Industrial / Logístico", location: "Zona Industrial de Barcelona", price: "Venta: $700k | Alq: $8k", area: "4.445 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 10.53.43 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 10.53.43 AM (3).jpeg", "WhatsApp Image 2026-11-15 at 10.53.44 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 10.53.44 AM.jpeg"],
+                description: "Galpón operativo con amplio patio de maniobras, garita, oficinas y tanques de agua de gran capacidad."
+            },
+            { 
+                id: 5, status: 'venta', type: "Local Comercial", title: "Sede Corporativa C.C. Géminis", location: "Av. Intercomunal", price: "$100.000", area: "347 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 10.58.12 AM (6).jpeg", "WhatsApp Image 2026-11-15 at 10.58.11 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 10.58.11 AM.jpeg", "WhatsApp Image 2026-11-15 at 10.58.12 AM (1).jpeg"],
+                description: "Estratégico local distribuido en 8 oficinas, salón comedor y mezzanine. Ideal para sede corporativa."
+            },
+            { 
+                id: 6, status: 'alquiler', type: "Oficina", title: "Oficina Ejecutiva Amoblada", location: "Lechería", price: "$600 / mes", area: "44 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 11.03.40 AM (2).jpeg", "WhatsApp Image 2026-11-15 at 11.03.40 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 11.03.40 AM (3).jpeg"],
+                description: "Moderna y lista para ocupar, ideal para profesionales. Totalmente amoblada y climatizada."
+            },
+            { 
+                id: 7, status: 'alquiler', type: "Locales", title: "Galería Comercial Céntrica", location: "Centro de Barcelona", price: "$150 - $250 / mes", area: "9 m² - 16 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 11.09.24 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 11.09.23 AM.jpeg", "WhatsApp Image 2026-11-15 at 11.09.25 AM (1).jpeg"],
+                description: "Excelente oportunidad para emprendedores. 9 locales con fachadas de vidrio y opciones a modificar."
+            },
+            { 
+                id: 8, status: 'alquiler', type: "Oficina", title: "Oficina Premium Grey Plaza", location: "Lechería", price: "$1.250 / mes", area: "45 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 11.14.43 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 11.14.43 AM (3).jpeg", "WhatsApp Image 2026-11-15 at 11.14.44 AM (1).jpeg"],
+                description: "Exclusiva oficina comercial con acabados de lujo, dos ambientes de trabajo y mezzanine."
+            },
+            { 
+                id: 9, status: 'alquiler', type: "Vacacional", title: "Casa La Curruca", location: "Ensenada Honda (Cumaná)", price: "200€ / día", area: "12 personas", 
+                images: ["WhatsApp Image 2026-11-15 at 11.22.32 AM.jpeg", "WhatsApp Image 2026-11-15 at 11.22.32 AM (2).jpeg", "WhatsApp Image 2026-11-15 at 11.22.32 AM (5).jpeg"],
+                description: "Espectacular casa vacacional a la orilla de la playa con salón de juegos y área de parrillera."
+            },
+            { 
+                id: 10, status: 'alquiler', type: "Vacacional", title: "Apto. Frente a Canales", location: "Residencias THAI, Lechería", price: "$120 / noche", area: "3 Habitaciones", 
+                images: ["WhatsApp Image 2026-11-15 at 11.33.28 AM (5).jpeg", "WhatsApp Image 2026-11-15 at 11.33.28 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 11.33.28 AM (7).jpeg", "WhatsApp Image 2026-11-15 at 11.33.27 AM (1).jpeg"],
+                description: "Apto exclusivo de lujo, full equipado, con áreas sociales, piscina y muelle común."
+            },
+            { 
+                id: 11, status: 'venta', type: "Casa / Villa", title: "Propiedad con Piscina y Vivero", location: "Cantaclaro, vía El Rincón", price: "$70.000", area: "2.274 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 11.38.47 AM (4).jpeg", "WhatsApp Image 2026-11-15 at 11.38.45 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 11.38.46 AM (4).jpeg", "WhatsApp Image 2026-11-15 at 11.38.48 AM (1).jpeg"],
+                description: "Un oasis de tranquilidad con 4 habitaciones, piscina, vivero y extensas áreas verdes."
+            },
+            { 
+                id: 12, status: 'venta', type: "Complejo", title: "Macroproyecto en San Mateo", location: "Avenida El Carito", price: "$300.000", area: "8.917 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 11.58.10 AM (1).jpeg", "WhatsApp Image 2026-11-15 at 11.58.10 AM (3).jpeg", "WhatsApp Image 2026-11-15 at 11.58.11 AM (1).jpeg"],
+                description: "Extenso terreno con 4 viviendas, 5 locales comerciales activos y pozo profundo."
+            },
+            { 
+                id: 13, status: 'venta', type: "Local Comercial", title: "Gran Local Plaza Miranda", location: "Frente a Plaza Miranda", price: "$1.100.000", area: "780 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.00.40 PM (3).jpeg", "WhatsApp Image 2026-11-15 at 12.00.40 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.00.40 PM (5).jpeg"],
+                description: "Imponente local comercial actualizado en salones diáfanos, goza de excelente exposición."
+            },
+            { 
+                id: 14, status: 'venta', type: "Residencial", title: "Casa Principal + Anexo", location: "San Mateo, Municipio Libertad", price: "$26.000", area: "965 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.03.31 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.03.31 PM (3).jpeg", "WhatsApp Image 2026-11-15 at 12.03.32 PM (2).jpeg"],
+                description: "Terreno comercial y residencial frente a la av principal con amplio estacionamiento."
+            },
+            { 
+                id: 15, status: 'venta', type: "Oficina / Local", title: "Oficina C.C. Casanova", location: "Av. Miranda, Barcelona", price: "$60.000", area: "110 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.05.08 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.05.09 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.05.09 PM (3).jpeg"],
+                description: "Ubicación estratégica con grandes ventanales. Distribuida en 4 amplias áreas definidas."
+            },
+            { 
+                id: 16, status: 'venta', type: "Local Comercial", title: "Local Ideal Emprendedores", location: "Av. Miranda, Barcelona", price: "$17.000", area: "19 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.06.40 PM.jpeg"],
+                description: "Cómodo local en C.C. Casanova, oportunidad perfecta para consultorios independientes."
+            },
+            { 
+                id: 17, status: 'venta', type: "Local Comercial", title: "Local Comercial 28 m²", location: "Av. Miranda, Barcelona", price: "$21.000", area: "28 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.06.40 PM (2).jpeg", "WhatsApp Image 2026-11-15 at 12.06.40 PM (3).jpeg"],
+                description: "Área integrada de pisos de terracota y fachada de vidrio con alta visibilidad comercial."
+            },
+            { 
+                id: 18, status: 'venta', type: "Terreno", title: "Terreno Comercial Camino Nuevo", location: "Urb. Camino Nuevo 1", price: "$60.000", area: "213,50 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.12.07 PM.jpeg", "WhatsApp Image 2026-11-15 at 12.12.08 PM (1).jpeg"],
+                description: "Terreno totalmente plano y cercado en avenida transitada, asegurando alta plusvalía."
+            },
+            { 
+                id: 19, status: 'venta', type: "Apartamento", title: "Apartamento C.R. Las Aves", location: "Las Aves, Barcelona", price: "$60.000", area: "74 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.13.45 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.13.45 PM (3).jpeg", "WhatsApp Image 2026-11-15 at 12.13.46 PM (3).jpeg", "WhatsApp Image 2026-11-15 at 12.13.46 PM (5).jpeg"],
+                description: "Apartamento moderno de 2 habitaciones, listo para ocupar. El conjunto ofrece áreas verdes, parques y caney."
+            },
+            { 
+                id: 20, status: 'alquiler', type: "Local", title: "Locales Modulares Grey Plaza", location: "C.C. Grey Plaza", price: "$750 - $1.250 / mes", area: "45 a 90 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.16.17 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.16.25 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.16.26 PM (3).jpeg"],
+                description: "Dos locales de 45 m² contiguos disponibles, ideal boutique o atención al cliente. Amplia fachada."
+            },
+            { 
+                id: 21, status: 'venta', type: "Townhouse", title: "Townhouse Savannah Place", location: "Lechería", price: "$320.000", area: "194 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.18.07 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.18.05 PM.jpeg", "WhatsApp Image 2026-11-15 at 12.18.06 PM (2).jpeg", "WhatsApp Image 2026-11-15 at 12.18.08 PM (1).jpeg"],
+                description: "Propiedad de lujo en conjunto íntimo (solo 6 Townhouses). Piscina, caney y tanque de 36.000 litros."
+            },
+            { 
+                id: 22, status: 'venta', type: "Bodegón", title: "Bodegón Totalmente Equipado", location: "Av. Miranda, Barcelona", price: "$600.000", area: "250 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.23.32 PM (2).jpeg", "WhatsApp Image 2026-11-15 at 12.23.31 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.23.32 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.23.32 PM (4).jpeg"],
+                description: "Negocio activo 'Llave en mano' con salón estilo bar, mobiliario, inventario y planta eléctrica de 40KVA."
+            },
+            { 
+                id: 23, status: 'venta', type: "Apartamento", title: "Lujo en C.R. Coral Suites", location: "Lechería (Piso 9)", price: "$126.000", area: "87 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.26.33 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.26.34 PM (2).jpeg", "WhatsApp Image 2026-11-15 at 12.26.34 PM (6).jpeg", "WhatsApp Image 2026-11-15 at 12.26.34 PM (1).jpeg"],
+                description: "Diseño elegante con pisos de mármol travertino, cocina concepto abierto y sistema semi-domotizado."
+            },
+            { 
+                id: 24, status: 'alquiler', type: "Local Comercial", title: "Local Céntrico P.B.", location: "Av. Fuerzas Armadas (Cerca MRW)", price: "$300 / mes", area: "50 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 12.28.41 PM (2).jpeg", "WhatsApp Image 2026-11-15 at 12.28.41 PM (1).jpeg", "WhatsApp Image 2026-11-15 at 12.28.41 PM.jpeg"],
+                description: "Local en planta baja cómodo y de excelente acceso. Cuenta con 2 divisiones y baño interno."
+            }
         ];
 
         let activeFilter = 'venta';
+        let currentGallery = [];
+        let currentIndex = 0;
 
+        // Renderiza las tarjetas del portafolio
         function renderProperties() {
             const container = document.getElementById('propiedades-container');
             container.innerHTML = '';
             
             const filtered = properties.filter(p => p.status === activeFilter || p.status === 'ambos');
             
+            if(filtered.length === 0) {
+                container.innerHTML = '<p class="text-center text-gray-500 col-span-3">No hay propiedades en esta categoría por el momento.</p>';
+                return;
+            }
+
             filtered.forEach(prop => {
                 const labelStatus = prop.status === 'ambos' ? 'Venta / Alquiler' : prop.status;
                 const msg = `Hola Guillermo, estoy interesado en: ${prop.title} (${prop.price})`;
                 
                 container.innerHTML += `
-                <div class="bg-white rounded shadow-xl flex flex-col fade-in">
-                    <div class="relative h-64 bg-gray-200">
-                        <img src="${prop.image}" alt="${prop.title}" class="w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase text-white bg-[#1C1C1C]">${prop.type}</div>
-                        <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold uppercase text-[#1C1C1C] bg-[#CBA052]">${labelStatus}</div>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">${prop.title}</h4>
-                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-[#CBA052]"></i> ${prop.location}</p>
-                        <div class="mb-6">
-                            <p class="text-2xl font-bold text-[#A58B5C]">${prop.price}</p>
-                            <p class="text-sm font-semibold text-gray-600">Dimensión: ${prop.area}</p>
+                <div class="bg-white rounded overflow-hidden shadow-xl flex flex-col fade-in">
+                    <!-- Imagen de la tarjeta con evento de Galería -->
+                    <div class="relative h-64 bg-gray-200 cursor-pointer group" onclick="openGallery(${prop.id})">
+                        <img src="${prop.images[0]}" alt="${prop.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 text-white font-bold bg-[#CBA052] px-6 py-2 rounded-full transform scale-90 group-hover:scale-100 transition-all shadow-lg flex items-center gap-2">
+                                <i class="fas fa-images"></i> Ver ${prop.images.length} Fotos
+                            </span>
                         </div>
-                        <a href="https://wa.me/584248801183?text=${encodeURIComponent(msg)}" target="_blank" class="w-full mt-auto py-3 flex justify-center items-center gap-2 text-white font-medium bg-[#1C1C1C] rounded hover:bg-[#333] transition-colors">
-                            <i class="fab fa-whatsapp"></i> Solicitar Información
+                        <div class="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase text-white bg-[#1C1C1C] rounded shadow">${prop.type}</div>
+                        <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold uppercase text-[#1C1C1C] bg-[#CBA052] rounded shadow">${labelStatus}</div>
+                    </div>
+                    <!-- Contenido de la Tarjeta -->
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h4 class="text-xl font-bold text-gray-900 mb-2 leading-tight">${prop.title}</h4>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-[#CBA052] mr-1"></i> ${prop.location}</p>
+                        
+                        <div class="mb-4">
+                            <p class="text-2xl font-extrabold text-[#A58B5C]">${prop.price}</p>
+                            <p class="text-sm font-semibold text-gray-700">Dimensión: ${prop.area}</p>
+                        </div>
+                        
+                        <p class="text-sm text-gray-600 mb-6 flex-grow">${prop.description}</p>
+                        
+                        <a href="https://wa.me/584248801183?text=${encodeURIComponent(msg)}" target="_blank" class="w-full py-3 flex items-center justify-center gap-2 text-white font-semibold bg-[#1C1C1C] rounded hover:bg-[#333] transition-colors shadow">
+                            <i class="fab fa-whatsapp text-lg"></i> Me Interesa
                         </a>
                     </div>
                 </div>`;
             });
         }
 
+        // Sistema de Pestañas (Venta/Alquiler)
         function setFilter(filter) {
             activeFilter = filter;
             const btnVenta = document.getElementById('btn-venta');
             const btnAlquiler = document.getElementById('btn-alquiler');
 
             if(filter === 'venta') {
-                btnVenta.className = 'px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors';
+                btnVenta.className = 'px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors shadow';
                 btnAlquiler.className = 'px-8 py-3 text-sm uppercase font-bold text-gray-400 border border-gray-600 hover:border-[#CBA052] hover:text-[#CBA052] transition-colors';
             } else {
-                btnAlquiler.className = 'px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors';
+                btnAlquiler.className = 'px-8 py-3 text-sm uppercase font-bold bg-[#CBA052] text-white border border-[#CBA052] transition-colors shadow';
                 btnVenta.className = 'px-8 py-3 text-sm uppercase font-bold text-gray-400 border border-gray-600 hover:border-[#CBA052] hover:text-[#CBA052] transition-colors';
             }
             renderProperties();
         }
 
+        // --- SISTEMA DE GALERÍA MODAL ---
+
+        function openGallery(id) {
+            const prop = properties.find(p => p.id === id);
+            if(!prop || !prop.images || prop.images.length === 0) return;
+            
+            currentGallery = prop.images;
+            currentIndex = 0;
+            
+            document.getElementById('gallery-modal').classList.remove('hidden');
+            document.getElementById('gallery-modal').classList.add('flex');
+            document.body.classList.add('modal-open');
+            
+            updateGalleryUI();
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').classList.add('hidden');
+            document.getElementById('gallery-modal').classList.remove('flex');
+            document.body.classList.remove('modal-open');
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            updateGalleryUI();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            updateGalleryUI();
+        }
+
+        function updateGalleryUI() {
+            document.getElementById('gallery-img').src = currentGallery[currentIndex];
+            document.getElementById('gallery-counter').innerText = currentIndex + 1;
+            document.getElementById('gallery-total').innerText = currentGallery.length;
+        }
+
+        // Cargar las propiedades al iniciar la página
         renderProperties();
     </script>
 </body>
