@@ -9,7 +9,6 @@
     <style>
         .fade-in { animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        /* Evita que el fondo se mueva cuando la galería está abierta */
         body.modal-open { overflow: hidden; }
     </style>
 </head>
@@ -21,7 +20,7 @@
             <h1 class="text-2xl font-bold tracking-tighter text-white">
                 CENTURY 21 <span class="font-light text-[#CBA052]">Oasis</span>
             </h1>
-            <a href="https://wa.me/584248801183?text=Hola%20Guillermo,%20vengo%20de%20tu%20portafolio%20web%20y%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20inmobiliaria." target="_blank" class="px-6 py-2 bg-[#CBA052] text-white text-sm font-medium rounded hover:bg-[#A58B5C] transition-colors shadow">
+            <a href="https://wa.me/584248801183?text=Hola%20Guillermo,%20vengo%20de%20tu%20portafolio%20web." target="_blank" class="px-6 py-2 bg-[#CBA052] text-white text-sm font-medium rounded hover:bg-[#A58B5C] transition-colors shadow">
                 Contactar
             </a>
         </div>
@@ -58,8 +57,8 @@
                     Con más de 5 años de trayectoria en el mercado inmobiliario del estado Anzoátegui, brindo un servicio ejecutivo, transparente y enfocado en resultados. Te acompaño en cada paso de la negociación.
                 </p>
                 <div class="flex flex-wrap gap-4 mt-8">
-                    <a href="https://instagram.com/guillermo_croes" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-[#CBA052] hover:text-[#CBA052] transition-colors"><i class="fab fa-instagram text-xl"></i> @guillermo_croes</a>
-                    <a href="https://instagram.com/c21guillermocroes" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-[#CBA052] hover:text-[#CBA052] transition-colors"><i class="fab fa-instagram text-xl"></i> @c21guillermocroes</a>
+                    <a href="https://www.instagram.com/guillermo_croes/" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-[#CBA052] hover:text-[#CBA052] transition-colors"><i class="fab fa-instagram text-xl"></i> @guillermo_croes</a>
+                    <a href="https://www.instagram.com/c21guillermocroes/" target="_blank" class="flex items-center gap-2 px-6 py-3 border border-gray-300 rounded hover:border-[#CBA052] hover:text-[#CBA052] transition-colors"><i class="fab fa-instagram text-xl"></i> @c21guillermocroes</a>
                 </div>
             </div>
         </div>
@@ -85,7 +84,7 @@
         </div>
     </section>
 
-    <!-- Galería Modal (Oculta por defecto) -->
+    <!-- Galería Modal -->
     <div id="gallery-modal" class="fixed inset-0 z-[100] bg-black bg-opacity-95 hidden flex-col items-center justify-center backdrop-blur-sm transition-opacity">
         <button onclick="closeGallery()" class="absolute top-6 right-6 text-white text-4xl hover:text-[#CBA052] transition-colors z-50">&times;</button>
         
@@ -168,8 +167,8 @@
                 description: "Apto exclusivo de lujo, full equipado, con áreas sociales, piscina y muelle común."
             },
             { 
-                id: 11, status: 'venta', type: "Casa / Villa", title: "Propiedad con Piscina y Vivero", location: "Cantaclaro, vía El Rincón", price: "$70.000", area: "2.274 m²", 
-                images: ["WhatsApp Image 2026-11-15 at 11.38.48 AM.jpeg", "WhatsApp Image 2026-11-15 at 11.38.46 AM (8).jpeg", "WhatsApp Image 2026-11-15 at 11.38.47 AM.jpeg", "WhatsApp Image 2026-11-15 at 11.38.47 AM (4).jpeg"],
+                id: 11, status: 'venta', type: "Casa / Villa", title: "Propiedad con Piscina y Vivero", location: "Cantaclaro, vía El Rincón", price: "$75.000", area: "2.274 m²", 
+                images: ["WhatsApp Image 2026-11-15 at 11.38.45 AM (4).jpeg", "WhatsApp Image 2026-11-15 at 11.38.48 AM.jpeg", "WhatsApp Image 2026-11-15 at 11.38.46 AM (8).jpeg", "WhatsApp Image 2026-11-15 at 11.38.47 AM.jpeg"],
                 description: "Un oasis de tranquilidad con 4 habitaciones, piscina, vivero y extensas áreas verdes."
             },
             { 
@@ -219,7 +218,7 @@
             },
             { 
                 id: 21, status: 'venta', type: "Townhouse", title: "Townhouse Savannah Place", location: "Lechería", price: "$320.000", area: "194 m²", 
-                images: ["WhatsApp Image 2026-11-15 at 12.18.06 PM_2.jpeg", "WhatsApp Image 2026-11-15 at 12.18.05 PM_2.jpeg", "WhatsApp Image 2026-11-15 at 12.18.06 PM (2)_2.jpeg", "WhatsApp Image 2026-11-15 at 12.18.08 PM (2).jpeg", "WhatsApp Image 2026-11-15 at 12.18.06 PM (5)_2.jpeg"],
+                images: ["WhatsApp Image 2026-11-15 at 12.18.06 PM.jpeg", "WhatsApp Image 2026-11-15 at 12.18.06 PM (2).jpeg", "WhatsApp Image 2026-11-15 at 12.18.07 PM (3).jpeg"],
                 description: "Propiedad de lujo en conjunto íntimo (solo 6 Townhouses). Piscina, caney y tanque de 36.000 litros."
             },
             { 
@@ -229,7 +228,7 @@
             },
             { 
                 id: 23, status: 'venta', type: "Apartamento", title: "Lujo en C.R. Coral Suites", location: "Lechería (Piso 9)", price: "$126.000", area: "87 m²", 
-                images: ["WhatsApp Image 2026-11-15 at 12.26.34 PM (5)_2.jpeg", "WhatsApp Image 2026-11-15 at 12.26.34 PM (7)_2.jpeg", "WhatsApp Image 2026-11-15 at 12.26.34 PM (3)_2.jpeg"],
+                images: ["WhatsApp Image 2026-11-15 at 12.26.34 PM (5).jpeg", "WhatsApp Image 2026-11-15 at 12.26.34 PM (7).jpeg", "WhatsApp Image 2026-11-15 at 12.26.33 PM (1).jpeg"],
                 description: "Diseño elegante con pisos de mármol travertino, cocina concepto abierto y sistema semi-domotizado."
             },
             { 
@@ -243,7 +242,6 @@
         let currentGallery = [];
         let currentIndex = 0;
 
-        // Renderiza las tarjetas del portafolio
         function renderProperties() {
             const container = document.getElementById('propiedades-container');
             container.innerHTML = '';
@@ -261,7 +259,6 @@
                 
                 container.innerHTML += `
                 <div class="bg-white rounded overflow-hidden shadow-xl flex flex-col fade-in">
-                    <!-- Imagen de la tarjeta con evento de Galería -->
                     <div class="relative h-64 bg-gray-200 cursor-pointer group" onclick="openGallery(${prop.id})">
                         <img src="${prop.images[0]}" alt="${prop.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all flex items-center justify-center">
@@ -272,7 +269,6 @@
                         <div class="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase text-white bg-[#1C1C1C] rounded shadow">${prop.type}</div>
                         <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold uppercase text-[#1C1C1C] bg-[#CBA052] rounded shadow">${labelStatus}</div>
                     </div>
-                    <!-- Contenido de la Tarjeta -->
                     <div class="p-6 flex-grow flex flex-col">
                         <h4 class="text-xl font-bold text-gray-900 mb-2 leading-tight">${prop.title}</h4>
                         <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-[#CBA052] mr-1"></i> ${prop.location}</p>
@@ -292,7 +288,6 @@
             });
         }
 
-        // Sistema de Pestañas (Venta/Alquiler)
         function setFilter(filter) {
             activeFilter = filter;
             const btnVenta = document.getElementById('btn-venta');
@@ -307,8 +302,6 @@
             }
             renderProperties();
         }
-
-        // --- SISTEMA DE GALERÍA MODAL ---
 
         function openGallery(id) {
             const prop = properties.find(p => p.id === id);
@@ -346,7 +339,6 @@
             document.getElementById('gallery-total').innerText = currentGallery.length;
         }
 
-        // Cargar las propiedades al iniciar la página
         renderProperties();
     </script>
 </body>
