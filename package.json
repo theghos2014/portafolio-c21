@@ -1,0 +1,17 @@
+{
+  "name": "portafolio-c21",
+  "version": "1.0.0",
+  "description": "Portfolio for Century 21 Oasis - Guillermo Croes",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["portfolio", "real-estate", "century21"],
+  "author": "Guillermo Croes",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
